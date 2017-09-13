@@ -60,7 +60,8 @@ function init() {
     render.mouse = mouse;
 
     World.add(world, [
-            MyBodies.edge(100, 100, 0, {isStatic: true})]);
+            Bodies.edge(100, 100, 200, 200, 2),
+            ]);
 
     return render.canvas;
 }
@@ -69,7 +70,6 @@ function addSVG() {
     $.get(SVG_PATH + 'svg.svg').done(function(data) {
         var vertexSets = [],
             color = Common.choose(['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58']);
-        console.log(color);
 
 
         $(data).find('path').each(function(i, path) {
@@ -88,7 +88,6 @@ function addSVG() {
 }
 
 function addParticles() {
-    console.log("addParticles()");
     // add bodies
     var stack = Composites.stack(20, 20, 20, 5, 0, 0, function(x, y) {
         return Bodies.circle(x, y, Common.random(10, 20), { friction: 0.00001, restitution: 0.5, density: 0.001 });
