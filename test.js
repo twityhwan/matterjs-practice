@@ -76,7 +76,16 @@ function addSVG() {
             vertexSets.push(Svg.pathToVertices(path, 30));
         });
 
-        World.add(world, Bodies.fromVertices(400, 200, vertexSets, {
+        var e = MyBodies.fromVertices(100, 100, vertexSets[0], {
+            render: {
+                fillStyle: color,
+                strokeStyle: color,
+            },
+            isStatic: true
+        }, true);
+        World.add(world, e);
+
+        World.add(world, Bodies.fromVertices(400, 200, vertexSets[0], {
             render: {
                 fillStyle: color,
                 strokeStyle: color,
